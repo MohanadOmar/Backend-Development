@@ -1,0 +1,57 @@
+import random
+from art import logo, vs
+from game_data import data
+#from replit import clear
+
+#Generate Random Account
+def random_account():
+  ''' Generates random account '''
+  account = random.choice(data)
+  return account
+
+#Comparing account_a and acount_b and returning back the winner
+def compare(account_a, account_b):
+  ''' Comparing account_a and acount_b and returning back the winner '''
+  if account_a['follower_count'] > account_b['follower_count']:
+    return account_a
+  elif account_b['follower_count'] > account_a['follower_count']:
+    return account_b
+
+
+def game():
+  #Logo
+  print(logo)
+  #Game ended
+  game_ended = False
+  #Score
+  score = 0
+  #Data
+  account_a = random_account()
+  account_b = random_account()
+  winner = compare(account_a, account_b)
+  print(f"""Account A: His name is {account_a['name']}, work as: {account_a['description']}, live in: {account_a['country']}
+          \n {vs} \n 
+Account B: His name is {account_b['name']}, work as: {account_b['description']}, live in: {account_b['country']}""")
+
+  while not game_ended:
+    winner = compare(account_a, account_b)
+    answer = input("Choose 'A' or 'B' : ").lower()
+    if answer == "a":
+      answer = account_a
+    elif answer == "b":
+      answer = account_b
+
+    if answer == winner:
+      score += 1
+      account_a = winner
+      account_b = random_account()
+      #clear()
+      print(f"""Account A: His is name {account_a['name']}, work as: {account_a['description']}, live in: {account_a['country']}
+          \n {vs} \n 
+Account B: His name is {account_b['name']}, work as: {account_b['description']}, live in: {account_b['country']}\n Your Score is: {score}""")
+    else:
+      print("Oops... wrong Choice, You Lost!")
+      game_ended = True
+
+  
+game()
