@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>To Do List</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+  <ul class="nav justify-content-center">
+    <% allLists.forEach(function(list){ %>
+      <li class="nav-item">
+        <a class="nav-link active" href="<%= '/' + list.name %>"><%= list.name %></a>
+      </li>
+    <% }) %>
+  </ul>

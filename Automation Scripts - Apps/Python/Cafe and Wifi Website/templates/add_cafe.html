@@ -1,0 +1,15 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "bootstrap/base.html" %}
+
+{% include "header.html" %}
+
+{% block content %}
+<hr>
+    <div class="container">
+        <h1>Add New Cafe</h1>
+        {{ wtf.quick_form(form) }}
+    </div>
+<hr>
+{% endblock %}
+
+
